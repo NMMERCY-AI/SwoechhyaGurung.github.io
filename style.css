@@ -1,0 +1,269 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #2196F3;
+    --accent-color: #FFC107;
+    --text-color: #333;
+    --light-gray: #f5f7fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 20px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.header {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.header:hover {
+    transform: translateY(-5px);
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+.timeline-item {
+    padding: 25px;
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    width: 45%;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.left {
+    left: 0;
+    animation: slideLeft 1s ease-out;
+}
+
+.right {
+    left: 55%;
+    animation: slideRight 1s ease-out;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: var(--secondary-color);
+    border: 4px solid white;
+    top: 30px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.timeline-item:hover::after {
+    background: var(--accent-color);
+}
+
+.left::after {
+    right: -17px;
+}
+
+.right::after {
+    left: -17px;
+}
+
+.timeline-content {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.timeline-item img,
+.timeline-item video {
+    width: 100%;
+    border-radius: 10px;
+    margin: 15px 0;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.timeline-item img:hover,
+.timeline-item video:hover {
+    transform: scale(1.03);
+}
+
+.milestone-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover .milestone-icon {
+    transform: scale(1.2);
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.carousel-item {
+    display: none;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.carousel-item.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.carousel-controls button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.carousel-controls button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.carousel-controls button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.carousel-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.indicator-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.date-badge {
+    position: absolute;
+    top: -15px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.left .date-badge {
+    right: 20px;
+}
+
+.right .date-badge {
+    left: 20px;
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #666;
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: calc(100% - 80px);
+        margin-left: 60px;
+    }
+
+    .right {
+        left: 0;
+    }
+
+    .left::after,
+    .right::after {
+        left: -17px;
+    }
+
+    .left .date-badge,
+    .right .date-badge {
+        left: 20px;
+    }
+}
